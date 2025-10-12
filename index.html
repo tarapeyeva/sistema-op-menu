@@ -254,7 +254,7 @@
                 </div>
             </div>
 
-            <div class="bot-card available" onclick="openBot('https://t.me/sistema_op')">
+            <div class="bot-card available" onclick="openBlog()">
                 <div class="bot-header">
                     <div class="bot-icon">📝</div>
                     <div class="bot-title">Блог о системе в отделе продаж</div>
@@ -315,11 +315,7 @@
         tg.expand();
 
         function openBot(url) {
-            try {
-                tg.openTelegramLink(url);
-            } catch (e) {
-                tg.openLink(url);
-            }
+            tg.openTelegramLink(url);
         }
 
         function openSupport() {
@@ -332,10 +328,6 @@
 
         function openWhatsApp() {
             tg.openLink('https://api.whatsapp.com/send?phone=7051113701');
-        }
-
-        function openChannel() {
-            window.open('https://t.me/sistema_op', '_blank');
         }
 
         if (tg.colorScheme === 'dark') {
