@@ -263,7 +263,7 @@
                 </div>
             </div>
 
-            <div class="bot-card available" onclick="openBot('https://t.me/+sistema_op')">
+            <div class="bot-card available" onclick="openChannel()">
                 <div class="bot-header">
                     <div class="bot-icon">📝</div>
                     <div class="bot-title">Блог о системе в отделе продаж</div>
@@ -331,6 +331,7 @@
         }
 
         function openChannel() {
+            // Для каналов используем openLink - это нормальное поведение Telegram WebApp
             tg.openLink('https://t.me/sistema_op');
         }
 
