@@ -315,7 +315,12 @@
         tg.expand();
 
         function openBot(url) {
-            tg.openTelegramLink(url);
+            if (url.includes('sistema_op')) {
+                // Для канала sistema_op используем альтернативный метод
+                window.location.href = url;
+            } else {
+                tg.openTelegramLink(url);
+            }
         }
 
         function openSupport() {
