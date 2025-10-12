@@ -316,8 +316,16 @@
 
         function openBot(url) {
             if (url.includes('sistema_op')) {
-                // Для канала sistema_op используем альтернативный метод
-                window.location.href = url;
+                // Для канала sistema_op пробуем разные методы
+                try {
+                    tg.openTelegramLink(url);
+                } catch(e) {
+                    try {
+                        tg.openLink(url);
+                    } catch(e2) {
+                        window.open(url, '_blank');
+                    }
+                }
             } else {
                 tg.openTelegramLink(url);
             }
