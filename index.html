@@ -253,7 +253,7 @@
                 </div>
             </div>
 
-            <div class="bot-card available" onclick="openBot('https://t.me/systemaop')">
+            <div class="bot-card available" onclick="openSistemaOP()">
                 <div class="bot-header">
                     <div class="bot-icon">📝</div>
                     <div class="bot-title">Блог о системе в отделе продаж</div>
@@ -330,9 +330,9 @@
             tg.openTelegramLink(url);
         }
 
-        function openChannel() {
-            // Пробуем альтернативный формат для канала
-            tg.openTelegramLink('t.me/sistema_op');
+        function openSistemaOP() {
+            // Для этого канала используем openLink (откроется через браузер, затем Telegram)
+            tg.openLink('https://t.me/systemaop');
         }
 
         function openSupport() {
