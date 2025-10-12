@@ -331,8 +331,8 @@
         }
 
         function openChannel() {
-            // Для каналов используем openLink - это нормальное поведение Telegram WebApp
-            tg.openLink('https://t.me/sistema_op');
+            // Пробуем альтернативный формат для канала
+            tg.openTelegramLink('t.me/sistema_op');
         }
 
         function openSupport() {
