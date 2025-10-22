@@ -19,14 +19,14 @@
             color: #ffffff;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             min-height: 100vh;
-            padding: 10px 20px 15px;
+            padding: 8px 16px 12px;
             overflow: hidden;
         }
 
         .container {
             max-width: 400px;
             margin: 0 auto;
-            height: calc(100vh - 25px);
+            height: calc(100vh - 20px);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -34,13 +34,13 @@
 
         .header {
             text-align: center;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .logo {
-            width: 60px;
-            height: 60px;
-            margin: 0 auto 10px;
+            width: 55px;
+            height: 55px;
+            margin: 0 auto 8px;
             position: relative;
         }
 
@@ -81,9 +81,9 @@
         .dot:nth-child(8) { top: 15%; left: 15%; }
 
         .title {
-            font-size: 26px;
+            font-size: 24px;
             font-weight: bold;
-            margin-bottom: 5px;
+            margin-bottom: 3px;
             letter-spacing: 2px;
         }
 
@@ -92,7 +92,7 @@
         }
 
         .bots-section {
-            margin: 5px 0 5px;
+            margin: 8px 0;
         }
 
         .bot-card {
@@ -100,10 +100,14 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 12px;
             padding: 10px 12px;
-            margin-bottom: 8px;
+            margin-bottom: 7px;
             transition: all 0.3s ease;
             cursor: pointer;
             position: relative;
+        }
+
+        .bot-card:last-child {
+            margin-bottom: 0;
         }
 
         .bot-card:hover {
@@ -119,49 +123,50 @@
         .bot-header {
             display: flex;
             align-items: center;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .bot-icon {
-            width: 35px;
-            height: 35px;
+            width: 32px;
+            height: 32px;
             background: rgb(249, 46, 62);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-right: 10px;
-            font-size: 18px;
+            font-size: 17px;
             flex-shrink: 0;
         }
 
         .bot-title {
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 600;
             line-height: 1.2;
         }
 
         .bot-description {
-            font-size: 12px;
+            font-size: 11.5px;
             opacity: 0.85;
             line-height: 1.3;
+            padding-left: 42px;
         }
 
         .social-section {
-            margin: 5px 0 10px;
+            margin: 8px 0;
         }
 
         .social-links {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 8px;
+            gap: 7px;
         }
 
         .social-link {
             background: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 10px;
-            padding: 10px;
+            padding: 9px;
             text-decoration: none;
             color: #ffffff;
             display: flex;
@@ -177,14 +182,14 @@
         }
 
         .social-icon {
-            width: 28px;
-            height: 28px;
+            width: 26px;
+            height: 26px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 8px;
-            font-size: 14px;
+            margin-right: 7px;
+            font-size: 13px;
             color: white;
             flex-shrink: 0;
         }
@@ -200,8 +205,8 @@
         }
 
         .support-section {
-            margin-top: 10px;
-            margin-bottom: 5px;
+            margin-top: 8px;
+            margin-bottom: 0;
             text-align: center;
         }
 
@@ -210,8 +215,8 @@
             color: white;
             border: none;
             border-radius: 12px;
-            padding: 12px 24px;
-            font-size: 14px;
+            padding: 11px 24px;
+            font-size: 13px;
             font-weight: 600;
             cursor: pointer;
             width: 100%;
