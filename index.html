@@ -8,6 +8,10 @@
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <style>
+        :root {
+            --svg-size: clamp(16px, 3.2vw, 19px); /* ДОБАВЛЕНО: CSS переменная для SVG */
+        }
+        
         * {
             margin: 0;
             padding: 0;
@@ -19,28 +23,30 @@
             color: #ffffff;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             min-height: 100vh;
-            padding: 24px 16px 8px; /* ИЗМЕНЕНО: верхний padding с 8px на 24px */
-            overflow: hidden;
+            padding: 2vh 16px 1vh; /* ИЗМЕНЕНО: используем vh для адаптивности */
+            overflow-x: hidden;
+            overflow-y: auto; /* ИЗМЕНЕНО: разрешаем вертикальную прокрутку */
         }
 
         .container {
             max-width: 400px;
             margin: 0 auto;
-            min-height: calc(100vh - 32px);
+            min-height: 97vh; /* ИЗМЕНЕНО: адаптивная высота */
             display: flex;
             flex-direction: column;
+            justify-content: space-between; /* ДОБАВЛЕНО: равномерное распределение */
         }
 
         .header {
             text-align: center;
-            margin-bottom: 16px; /* ИЗМЕНЕНО: с 8px на 16px */
+            margin-bottom: clamp(8px, 2vh, 16px); /* ИЗМЕНЕНО: адаптивный margin */
             flex-shrink: 0;
         }
 
         .logo {
-            width: 75px; /* ИЗМЕНЕНО: с 65px на 75px */
-            height: 75px; /* ИЗМЕНЕНО: с 65px на 75px */
-            margin: 0 auto 14px; /* ИЗМЕНЕНО: нижний margin с 10px на 14px */
+            width: clamp(60px, 10vw, 75px); /* ИЗМЕНЕНО: адаптивный размер */
+            height: clamp(60px, 10vw, 75px); /* ИЗМЕНЕНО: адаптивный размер */
+            margin: 0 auto clamp(8px, 2vh, 14px); /* ИЗМЕНЕНО: адаптивный margin */
             position: relative;
         }
 
@@ -60,8 +66,8 @@
 
         .dot {
             position: absolute;
-            width: 8px; /* ИЗМЕНЕНО: с 7px на 8px */
-            height: 8px; /* ИЗМЕНЕНО: с 7px на 8px */
+            width: clamp(6px, 1.2vw, 8px); /* ИЗМЕНЕНО: адаптивный размер */
+            height: clamp(6px, 1.2vw, 8px); /* ИЗМЕНЕНО: адаптивный размер */
             border-radius: 50%;
             background: #ffffff;
         }
@@ -81,9 +87,9 @@
         .dot:nth-child(8) { top: 18%; left: 18%; }
 
         .title {
-            font-size: 28px; /* ИЗМЕНЕНО: с 26px на 28px */
+            font-size: clamp(24px, 5vw, 28px); /* ИЗМЕНЕНО: адаптивный размер */
             font-weight: bold;
-            margin-bottom: 6px; /* ИЗМЕНЕНО: с 4px на 6px */
+            margin-bottom: clamp(4px, 1vh, 6px); /* ИЗМЕНЕНО: адаптивный margin */
             letter-spacing: 2px;
         }
 
@@ -92,7 +98,7 @@
         }
 
         .bots-section {
-            margin: 10px 0; /* ИЗМЕНЕНО: с 6px на 10px */
+            margin: clamp(6px, 1.5vh, 10px) 0; /* ИЗМЕНЕНО: адаптивный margin */
             flex-shrink: 0;
         }
 
@@ -100,8 +106,8 @@
             background: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 12px;
-            padding: 14px 16px; /* ИЗМЕНЕНО: с 12px 14px на 14px 16px */
-            margin-bottom: 10px; /* ИЗМЕНЕНО: с 8px на 10px */
+            padding: clamp(12px, 2vh, 14px) clamp(14px, 3vw, 16px); /* ИЗМЕНЕНО: адаптивный padding */
+            margin-bottom: clamp(6px, 1.5vh, 10px); /* ИЗМЕНЕНО: адаптивный margin */
             transition: all 0.3s ease;
             cursor: pointer;
             position: relative;
@@ -128,47 +134,47 @@
         }
 
         .bot-icon {
-            width: 40px; /* ИЗМЕНЕНО: с 36px на 40px */
-            height: 40px; /* ИЗМЕНЕНО: с 36px на 40px */
+            width: clamp(36px, 7vw, 44px); /* ИЗМЕНЕНО: адаптивный размер */
+            height: clamp(36px, 7vw, 44px); /* ИЗМЕНЕНО: адаптивный размер */
             background: rgb(249, 46, 62);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 13px; /* ИЗМЕНЕНО: с 11px на 13px */
-            font-size: 20px; /* ИЗМЕНЕНО: с 18px на 20px */
+            margin-right: clamp(10px, 2vw, 13px); /* ИЗМЕНЕНО: адаптивный margin */
+            font-size: clamp(18px, 3.5vw, 22px); /* ИЗМЕНЕНО: адаптивный размер */
             flex-shrink: 0;
         }
 
         .bot-title {
-            font-size: 16px; /* ИЗМЕНЕНО: с 15px на 16px */
+            font-size: clamp(15px, 3vw, 17px); /* ИЗМЕНЕНО: адаптивный размер */
             font-weight: 600;
             line-height: 1.25;
         }
 
         .bot-description {
-            font-size: 13px; /* ИЗМЕНЕНО: с 12px на 13px */
+            font-size: clamp(12px, 2.5vw, 14px); /* ИЗМЕНЕНО: адаптивный размер */
             opacity: 0.85;
             line-height: 1.35;
-            padding-left: 53px; /* ИЗМЕНЕНО: с 47px на 53px */
+            padding-left: clamp(46px, 9vw, 57px); /* ИЗМЕНЕНО: адаптивный padding */
         }
 
         .social-section {
-            margin: 10px 0; /* ИЗМЕНЕНО: с 4px на 10px */
+            margin: clamp(6px, 1.5vh, 10px) 0; /* ИЗМЕНЕНО: адаптивный margin */
             flex-shrink: 0;
         }
 
         .social-links {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 12px; /* ИЗМЕНЕНО: с 10px на 12px */
+            gap: clamp(8px, 2vw, 14px); /* ИЗМЕНЕНО: адаптивный gap */
         }
 
         .social-link {
             background: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 10px;
-            padding: 14px; /* ИЗМЕНЕНО: с 11px на 14px */
+            padding: clamp(10px, 2vh, 16px); /* ИЗМЕНЕНО: адаптивный padding */
             text-decoration: none;
             color: #ffffff;
             display: flex;
@@ -184,14 +190,14 @@
         }
 
         .social-icon {
-            width: 38px; /* ИЗМЕНЕНО: с 32px на 38px */
-            height: 38px; /* ИЗМЕНЕНО: с 32px на 38px */
+            width: clamp(32px, 6.5vw, 42px); /* ИЗМЕНЕНО: адаптивный размер */
+            height: clamp(32px, 6.5vw, 42px); /* ИЗМЕНЕНО: адаптивный размер */
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 12px; /* ИЗМЕНЕНО: с 10px на 12px */
-            font-size: 19px; /* ИЗМЕНЕНО: с 16px на 19px */
+            margin-right: clamp(8px, 2vw, 14px); /* ИЗМЕНЕНО: адаптивный margin */
+            font-size: clamp(16px, 3.2vw, 21px); /* ИЗМЕНЕНО: адаптивный размер */
             color: white;
             flex-shrink: 0;
         }
@@ -202,12 +208,12 @@
         .whatsapp { background: #25d366; }
 
         .social-text {
-            font-size: 13.5px; /* ИЗМЕНЕНО: с 12.5px на 13.5px */
+            font-size: clamp(12px, 2.5vw, 14px); /* ИЗМЕНЕНО: адаптивный размер */
             font-weight: 500;
         }
 
         .support-section {
-            margin-top: 10px; /* ИЗМЕНЕНО: с 4px на 10px */
+            margin-top: clamp(6px, 1.5vh, 10px); /* ИЗМЕНЕНО: адаптивный margin */
             margin-bottom: 0;
             text-align: center;
             flex-shrink: 0;
@@ -218,8 +224,8 @@
             color: white;
             border: none;
             border-radius: 12px;
-            padding: 14px 24px; /* ИЗМЕНЕНО: с 12px на 14px */
-            font-size: 14px; /* ИЗМЕНЕНО: с 13px на 14px */
+            padding: clamp(12px, 2vh, 14px) 24px; /* ИЗМЕНЕНО: адаптивный padding */
+            font-size: clamp(13px, 2.5vw, 14px); /* ИЗМЕНЕНО: адаптивный размер */
             font-weight: 600;
             cursor: pointer;
             width: 100%;
@@ -231,40 +237,21 @@
             transform: translateY(-2px);
         }
 
-        /* ДОБАВЛЕНО: Медиа-запросы для больших экранов */
-        @media (min-width: 390px) {
-            .social-links {
-                gap: 14px; /* ИЗМЕНЕНО: с 12px на 14px */
+        /* Дополнительная оптимизация для очень маленьких экранов */
+        @media (max-height: 667px) {
+            body {
+                padding: 1vh 16px 0.5vh;
             }
             
-            .social-link {
-                padding: 16px; /* ИЗМЕНЕНО: с 13px на 16px */
+            .container {
+                min-height: 98.5vh;
             }
-            
-            .social-icon {
-                width: 42px; /* ИЗМЕНЕНО: с 36px на 42px */
-                height: 42px; /* ИЗМЕНЕНО: с 36px на 42px */
-                margin-right: 14px; /* ИЗМЕНЕНО: с 12px на 14px */
-                font-size: 21px; /* ИЗМЕНЕНО: с 18px на 21px */
-            }
-            
-            .social-text {
-                font-size: 14px; /* ИЗМЕНЕНО: с 13px на 14px */
-            }
-            
-            .bot-icon {
-                width: 44px; /* ДОБАВЛЕНО */
-                height: 44px; /* ДОБАВЛЕНО */
-                font-size: 22px; /* ДОБАВЛЕНО */
-            }
-            
-            .bot-title {
-                font-size: 17px; /* ДОБАВЛЕНО */
-            }
-            
-            .bot-description {
-                font-size: 14px; /* ДОБАВЛЕНО */
-                padding-left: 57px; /* ДОБАВЛЕНО */
+        }
+        
+        /* Оптимизация для больших экранов */
+        @media (min-width: 390px) and (min-height: 844px) {
+            body {
+                padding: 3vh 16px 1vh;
             }
         }
     </style>
@@ -325,7 +312,7 @@
             <div class="social-links">
                 <div class="social-link" onclick="openLink('https://www.instagram.com/vlad_is_luck?igsh=bmY4eWowa3RvbnY5')">
                     <div class="social-icon instagram">
-                        <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor">
+                        <svg style="width: clamp(16px, 3.2vw, 19px); height: clamp(16px, 3.2vw, 19px)" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                         </svg>
                     </div>
@@ -334,7 +321,7 @@
                 
                 <div class="social-link" onclick="openLink('https://www.threads.com/@vlad_is_luck?modal=true&xmt=AQF0n7szV_H3FfNP7Ma5_JS2YVVt7AYewHIS_Fj5pXubhKg&glyph_type=other_profile')">
                     <div class="social-icon threads">
-                        <svg xmlns="http://www.w3.org/2000/svg" aria-label="Threads" viewBox="0 0 192 192" width="19" height="19" fill="currentColor">
+                        <svg xmlns="http://www.w3.org/2000/svg" aria-label="Threads" viewBox="0 0 192 192" style="width: clamp(16px, 3.2vw, 19px); height: clamp(16px, 3.2vw, 19px)" fill="currentColor">
                             <path d="M141.537 88.9883C140.71 88.5919 139.87 88.2104 139.019 87.8451C137.537 60.5382 122.616 44.905 97.5619 44.745C97.4484 44.7443 97.3355 44.7443 97.222 44.7443C82.2364 44.7443 69.7731 51.1409 62.102 62.7807L75.881 72.2328C81.6116 63.5383 90.6052 61.6848 97.2286 61.6848C97.3051 61.6848 97.3819 61.6848 97.4576 61.6855C105.707 61.7381 111.932 64.1366 115.961 68.814C118.893 72.2193 120.854 76.925 121.825 82.8638C114.511 81.6207 106.601 81.2385 98.145 81.7233C74.3247 83.0954 59.0111 96.9879 60.0396 116.292C60.5615 126.084 65.4397 134.508 73.775 140.011C80.8224 144.663 89.899 146.938 99.3323 146.423C111.79 145.74 121.563 140.987 128.381 132.296C133.559 125.696 136.834 117.143 138.28 106.366C144.217 109.949 148.617 114.664 151.047 120.332C155.179 129.967 155.42 145.8 142.501 158.708C131.182 170.016 117.576 174.908 97.0135 175.059C74.2042 174.89 56.9538 167.575 45.7381 153.317C35.2355 139.966 29.8077 120.682 29.6052 96C29.8077 71.3178 35.2355 52.0336 45.7381 38.6827C56.9538 24.4249 74.2039 17.11 97.0132 16.9405C119.988 17.1113 137.539 24.4614 149.184 38.788C154.894 45.8136 159.199 54.6488 162.037 64.9503L178.184 60.6422C174.744 47.9622 169.331 37.0357 161.965 27.974C147.036 9.60668 125.202 0.195148 97.0695 0H96.9569C68.8816 0.19447 47.2921 9.6418 32.7883 28.0793C19.8819 44.4864 13.2244 67.3157 13.0007 95.9325L13 96L13.0007 96.0675C13.2244 124.684 19.8819 147.514 32.7883 163.921C47.2921 182.358 68.8816 191.806 96.9569 192H97.0695C122.03 191.827 139.624 185.292 154.118 170.811C173.081 151.866 172.510 128.119 166.26 113.541C161.776 103.087 153.227 94.5962 141.537 88.9883ZM98.4405 129.507C88.0005 130.095 77.1544 125.409 76.6196 115.372C76.2232 107.93 81.9158 99.626 99.0812 98.6368C101.047 98.5234 102.976 98.468 104.871 98.468C111.106 98.468 116.939 99.0737 122.242 100.233C120.264 124.935 108.662 128.946 98.4405 129.507Z"/>
                         </svg>
                     </div>
@@ -343,7 +330,7 @@
                 
                 <div class="social-link" onclick="openLink('https://systemop.notion.site/14eb2deb9921807e9e8ac2f0776ee0db?pvs=73')">
                     <div class="social-icon portfolio">
-                        <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor">
+                        <svg style="width: clamp(16px, 3.2vw, 19px); height: clamp(16px, 3.2vw, 19px)" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
                         </svg>
                     </div>
@@ -352,7 +339,7 @@
                 
                 <div class="social-link" onclick="openWhatsApp()">
                     <div class="social-icon whatsapp">
-                        <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor">
+                        <svg style="width: clamp(16px, 3.2vw, 19px); height: clamp(16px, 3.2vw, 19px)" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.56-.01-.188 0-.49.07-.747.35-.257.28-.982.96-.982 2.341s1.005 2.716 1.145 2.902c.139.186 1.97 3.005 4.77 4.215.667.285 1.188.456 1.594.583.67.213 1.281.182 1.763.111.538-.08 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.064 3.488"/>
                         </svg>
                     </div>
